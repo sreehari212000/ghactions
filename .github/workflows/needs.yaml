@@ -1,0 +1,21 @@
+name: Testing needs
+on: 
+  push:
+    branches:
+      - "main"
+jobs:
+  step1:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: echo "Hello this is the step one"
+  step2:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: echo "This is the second step"
+  step3:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: echo "This will onlr run after step1 and step2 has finished execution"
+    needs:
+      - step1
+      - step2
