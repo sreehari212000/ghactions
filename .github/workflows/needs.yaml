@@ -16,6 +16,13 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - run: echo "This will onlr run after step1 and step2 has finished execution"
+      - run: sleep 2
     needs:
       - step1
       - step2
+  step4:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: echo "This is the final step and the runs only after third step has finished executing"
+    needs: 
+      - step3
