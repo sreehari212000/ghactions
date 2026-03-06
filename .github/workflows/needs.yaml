@@ -20,8 +20,8 @@ jobs:
       - run: echo "This will onlr run after step1 and step2 has finished execution"
       - run: sleep 2
     needs:
-      - step1
-      - step2
+      - job1
+      - job2
   job4:
     runs-on: ubuntu-24.04
     steps:
@@ -30,4 +30,4 @@ jobs:
       - name: "Second step in Job 4"
         run: echo "This is the variable we defined above $SAMPLE_VAR"
     needs: 
-      - step3
+      - job3
