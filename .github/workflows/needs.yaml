@@ -1,18 +1,20 @@
 name: Testing needs
+env:
+  SAMPLE_VAR: this is a sample var
 on: 
   push:
     branches:
       - "main"
 jobs:
-  step1:
+  job1:
     runs-on: ubuntu-24.04
     steps:
       - run: echo "Hello this is the step one"
-  step2:
+  job2:
     runs-on: ubuntu-24.04
     steps:
       - run: echo "This is the second step"
-  step3:
+  job3:
     runs-on: ubuntu-24.04
     steps:
       - run: echo "This will onlr run after step1 and step2 has finished execution"
@@ -20,9 +22,12 @@ jobs:
     needs:
       - step1
       - step2
-  step4:
+  job4:
     runs-on: ubuntu-24.04
     steps:
-      - run: echo "This is the final step and the runs only after third step has finished executing"
+      - name: "SEER"
+        run: echo "This is the final step and the runs only after third step has finished executing"
+      - name: "Second step in Job 4"
+        run: echo "This is the variable we defined above $SAMPLE_VAR"
     needs: 
       - step3
